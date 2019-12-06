@@ -1,2 +1,2 @@
 "# prescriptive_analysis" 
-"# prescriptive_analysis" 
+<a href="https://paulvandev.github.io/prescriptive_analysis/pictures/Capture_MLC.PNG"><img class="fig" src="https://paulvandev.github.io/prescriptive_analysis/pictures/Capture_MLC.PNG" style="width:30%; height:auto;"/></a>
