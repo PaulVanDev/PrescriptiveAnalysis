@@ -1,4 +1,5 @@
 "# prescriptive_analysis" 
+<a href="pictures/Capture_prescriptive.PNG"><img class="fig" src="pictures/Capture_prescriptive.PNG" style="width:30%; height:auto;"/></a>
 
 <a href="pictures/Capture_MLC.PNG"><img class="fig" src="pictures/Capture_MLC.PNG" style="width:30%; height:auto;"/></a>
 
