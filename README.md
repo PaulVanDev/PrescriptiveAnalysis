@@ -32,6 +32,7 @@ A first attempt was done with SCIPY OPTIMIZE MINIMIZE. It works well for most of
 A second attempt was done with SCIPY OPTIMIZE DIFFERENTIAL_EVOLUTION for generalizing to all regression models. 
 
 ```
+from scipy.optimize import differential_evolution
 def predict_max_evol(_fitted_model,_x0,_variable_features,_deviation): 
     def model(Xin):
         X=[Xin]
@@ -56,7 +57,9 @@ def predict_max_evol(_fitted_model,_x0,_variable_features,_deviation):
                     bnds.insert(count,(_x0[i],_x0[i]))
                     count+=1
             #print(bnds)
+       ###### MAIN CALL ######     
             result = differential_evolution(model,bounds=bnds)
+       #######################
             #print(result)
             dfx0 = _x0.to_frame()
             
@@ -67,6 +70,14 @@ def predict_max_evol(_fitted_model,_x0,_variable_features,_deviation):
     else:
         return "Not a regression model"
 ```
+In this code, we see the main call where we find the optimizing function, the model packed in a internal defined function, and bounds which are the range of variations of all parameters. If a parameter is controllable, the bounds are previously calculated thanks to a deviation coefficient passed in argument.
+In output of the global function, we find the expected optimized result and the recommended value for each parameters.
+
+Outside this function, it could be necessary to control the recommended values to avoid an exceeding of the functional ranges.
+Further, and in a real context, a full management taken into account the time constants of the physical system should be considered.
+
+The view below shows the results of a test. 5 parameters were initially build and melted in a mathematical function to create an output. A predictive model was trained on a first part of the series of points and tested on the rest. In this last part, we activate at a defined moment the optimization, asking how to change param1 and param2 in order to maximize the output. The recommandation is to decrease param1 and param2.
+
 
 
 <a href="pictures/Capture_MLC_result.PNG"><img class="fig" src="pictures/Capture_MLC_result.PNG" style="width:30%; height:auto;"/></a>
