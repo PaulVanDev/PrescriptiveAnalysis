@@ -14,7 +14,7 @@ In the industry, if the goal is not to predict but to control a performance, a y
 
 How to do prescriptive analysis?
 
-There's several ways to do this but mainly it can be considered and solved as an optimizing problem. The goal would be to find how to modify the entry parameters to converge to the desired output. This is represented in the following view. A real physical system is joined as it would be for an AI application in production, the interest is indeed to optimize a real output, not the one of the model. The predictive model is packed in an optimizer. The optimizer receives the order - the change to apply -, the controllable variables and their range of variation. The output is the optimized variables: the recommanded controllable inputs joined to the free inputs.
+There's several ways to do this but mainly it can be considered and solved as an optimizing problem. The goal would be to find how to modify the entry parameters to converge to the desired output. This is represented in the following view. A real physical system is joined as it would be for an AI application in production, the interest is indeed to optimize a real output, not the one of the model. The predictive model is packed in an optimizer. The optimizer receives the order - the change to apply -, the controllable variables and their range of variation. The output is the optimized variables (the recommanded controllable inputs joined to the free inputs).
 
 
 
