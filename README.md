@@ -17,10 +17,56 @@ How to do prescriptive analysis?
 There's several ways to do this but mainly it can be considered and solved as an optimizing problem. The goal would be to find how to modify the entry parameters to converge to the desired output. This is represented in the following view. A real physical system is joined as it would be for an AI application in production, the interest is indeed to optimize a real output, not the one of the model.
 In this context, we suppose that the predictive model is a digital twin of the real system in the sens that it can simulate relatively well the system behavior.
 The predictive model is packed in an optimizer. The optimizer receives the order - the change to apply -, the controllable variables and their range of variation. The output is the optimized variables (the recommanded controllable inputs joined to the free inputs).
+Note that the problems considered here are regressions.
 
 
 
 
 <a href="pictures/Capture_MLC.PNG"><img class="fig" src="pictures/Capture_MLC.PNG" style="width:30%; height:auto;"/></a>
+
+how to do that in Python?
+
+Everyone in the Data Science Community knows Scikit-learn, but the solution for prescriptive analytics is not there. It is in Scipy.
+
+A first attempt was done with SCIPY OPTIMIZE MINIMIZE. It works well for most of the common regression models, SVR, MLP... but not for decision tree based regression models. This is due to the conditional nature of the decision tree based models, a proper math function is required for that kind of optimisation.
+A second attempt was done with SCIPY OPTIMIZE DIFFERENTIAL_EVOLUTION for generalizing to all regression models. 
+
+```
+def predict_max_evol(_fitted_model,_x0,_variable_features,_deviation): 
+    def model(Xin):
+        X=[Xin]
+        #print(X)
+        return -1*_fitted_model.predict(X)
+    #test if fitted_model is regression modeling
+    buf = "%s\n" % _fitted_model
+    if "egress" in buf or "SVR" in buf:
+        if "ogistic" in buf :
+            return "LogisticRegression - Not a regression model"
+        else:
+            #build bnds based on x0, variable_features  and deviation
+            bnds=[];
+            count=0
+            for i in _x0.keys():
+                if i in _variable_features:
+                    bound_min=_x0[i]-(_x0[i]*_deviation)
+                    bound_max=_x0[i]+(_x0[i]*_deviation)
+                    bnds.insert(count,(bound_min,bound_max))
+                    count+=1
+                else:
+                    bnds.insert(count,(_x0[i],_x0[i]))
+                    count+=1
+            #print(bnds)
+            result = differential_evolution(model,bounds=bnds)
+            #print(result)
+            dfx0 = _x0.to_frame()
+            
+            dfx0.rename(columns={ dfx0.columns[0]: "x0" },inplace=True)
+            dfx0['x0_max']=result.x
+            dfx0['delta'] = dfx0.apply(lambda x: x['x0_max']-x['x0'], axis=1 )   
+            return([-1*result.fun],dfx0)
+    else:
+        return "Not a regression model"
+```
+
 
 <a href="pictures/Capture_MLC_result.PNG"><img class="fig" src="pictures/Capture_MLC_result.PNG" style="width:30%; height:auto;"/></a>
