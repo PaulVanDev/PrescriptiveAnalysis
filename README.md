@@ -21,12 +21,12 @@ Note that the problems considered here are regressions.
 
 <a href="pictures/Capture_MLC.PNG"><img class="fig" src="pictures/Capture_MLC.PNG" style="width:30%; height:auto;"/></a>
 
-## How to do that in Python?
+## How to do prescriptive analysis in Python?
 
 Everyone in the Data Science Community knows Scikit-learn, but the solution for prescriptive analytics is not there. It is in Scipy.
-
-A first attempt was done with SCIPY OPTIMIZE MINIMIZE. It works well for most of the common regression models, SVR, MLP... but not for decision tree based regression models. This is due to the conditional nature of the decision tree based models, a proper math function is required for that kind of optimisation.
+A first attempt was done with SCIPY OPTIMIZE MINIMIZE. It was working well for most of the common regression models, SVR, MLP... but not for decision tree based regression models. This is due to the conditional nature of the decision tree based models, a proper math function is required for that kind of optimisation.
 A second attempt was done with SCIPY OPTIMIZE DIFFERENTIAL_EVOLUTION for generalizing to all regression models. 
+
 
 ```
 from scipy.optimize import differential_evolution
