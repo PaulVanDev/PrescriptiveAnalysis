@@ -1,6 +1,6 @@
 # Prescriptive Analysis  (or Machine Learning Control)
 
-The very inspirational graph below is well know among the data science community. It first describes the development of analytics through the decades - descriptive analytics before 00s, diagnostic analytics and the focus on data mining after 00s, more emphase on predictive analytics with the emergence of data science and the democratization of DS tools, prescriptive analytics for the future... - or it can also describe the process workflow of a data science project in function of the effort and time that it's possible to put in. Depending on whether you have a week or months, the insights can come from a good first statistical analysis or a full predictive analysis.
+The very inspirational graph below is well know among the data science community. It first describes the development of analytics through the decades - descriptive analytics before 00s, diagnostic analytics and the focus on data mining after 00s, more emphase on predictive analytics with the emergence of data science from 10s, prescriptive analytics for the 20s (now?) - or it can also describe the process workflow of a data science project in function of the effort and time that it's possible to put in. Depending on whether you have a week or months, the insights can come from a good first statistical analysis or a full predictive analysis.
 
 However if the first three kind of analytics are relatively obvious, the last one - prescriptive analytics - often rise questions. What is it? How to do that?
 
@@ -9,8 +9,8 @@ However if the first three kind of analytics are relatively obvious, the last on
 
 ## What is prescriptive analysis?
 
-In certain situations, once a good predictive model is available, we would like to know what to do to have a particular output or more generally to be able to control it. Let's take the well-know problem of the price houses prediction. Once the model is available, one could ask what are the actionable levers to increase the price of a house depending of the model entries. Obviously some variables can't be easily change as the mean price of the area, the ground surface, but for instance a better heat insulation could be considered.
-In the industry, if the goal is not to predict but to control a performance, a yield, prescriptive analysis will help to find out how to move the actionable (or also controllable) variables and how to change them. It is a kind of automation with a multivariate perspective. Again in this case, some parameters can not be changed (external temperature, weather, specific process parameters), so a distinction between controllable parameters and free parameters has to be done.
+In certain situations, once a good predictive model is available, we would like to know what to do to have a particular prediction or more generally to be able to control it. Let's take the well-know problem of the price houses prediction. Once the model is available, one could ask what are the actionable levers to increase the price of a house depending of the model entries. Obviously some variables can't be easily change as the mean price of the area, the ground surface, but for instance a better heat insulation could be considered.
+In the industry, if the goal is not to predict but to control a performance (a yield), prescriptive analysis will help to find out how to move the actionable (or controllable) variables and how to change them. It is a kind of automation with a multivariate perspective. Again, in this case, some parameters can not be changed (external temperature, weather, specific process parameters), so a distinction between controllable parameters and free parameters has to be done.
 
 ## How to do prescriptive analysis?
 
